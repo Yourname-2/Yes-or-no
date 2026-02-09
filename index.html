@@ -14,10 +14,8 @@
     height: 100vh;
     margin: 0;
     background: linear-gradient(135deg, #14142b, #2c2c54);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
+    position: relative; /* required for absolute centering of card */
   }
 
   .card {
@@ -27,14 +25,13 @@
     backdrop-filter: blur(12px);
     border-radius: 20px;
     color: white;
-    position: relative; /* for absolute No button inside */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* vertical centering */
-    align-items: center; /* horizontal centering */
     text-align: center;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    position: absolute; /* for perfect centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
@@ -92,7 +89,7 @@
 
 <!-- FIRST UI -->
 <div class="card" id="choiceCard">
-  <h1>Bading kaba?</h1>
+  <h1>Are you gae?</h1>
   <div class="buttons">
     <button id="yes">Yes</button>
     <button id="no">No</button>
@@ -101,8 +98,8 @@
 
 <!-- SECOND UI -->
 <div class="card hidden success" id="successCard">
-  <h1>Alam ko naman sinusubukan kalang</h1>
-  <p>Don't deny it next time</p>
+  <h1>Sabi na e barbie</h1>
+  <p>Don't deny it next time😌</p>
 </div>
 
 <script>
