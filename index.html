@@ -9,7 +9,7 @@ cat > /mnt/user-data/outputs/henry-portfolio.html << 'HTMLEOF'
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   (function(){
-    emailjs.init({ publicKey: "Pa-PzT1jVj2K4OK2jP" });
+    emailjs.init({ publicKey: "Pa-PzT1jVj2K4OK2j" });
   })();
 </script>
 <style>
@@ -407,10 +407,8 @@ function showToast(msg, type){
 }
 
 <script>
-/* ── EmailJS Send ── */
 function sendEmail(){
   const btn = document.getElementById("sendBtn");
-
   const name = document.getElementById("from_name").value.trim();
   const email = document.getElementById("from_email").value.trim();
   const msg = document.getElementById("message").value.trim();
@@ -431,47 +429,8 @@ function sendEmail(){
     reply_to: email
   };
 
-  // 1. SEND TO YOU (contact form)
-  emailjs.send(
-    "service_69yj6af",
-    "template_a6znh8p",
-    params,
-    "Pa-PzT1jVj2K4OK2jP"
-  )
-
-  // 2. AUTO REPLY TO USER
-  .then(() => {
-    return emailjs.send(
-      "service_69yj6af",
-      "template_voqlri3",
-      params,
-      "Pa-PzT1jVj2K4OK2jP"
-    );
-  })
-
-  .then(() => {
-    showToast("Message sent successfully!", "success");
-
-    document.getElementById("from_name").value = "";
-    document.getElementById("from_email").value = "";
-    document.getElementById("message").value = "";
-  })
-
-  .catch((error) => {
-    console.error("EmailJS error:", error);
-    showToast("Oops! Something went wrong. Try emailing me directly.", "error");
-  })
-
-  .finally(() => {
-    btn.disabled = false;
-    btn.textContent = "Send Message";
-  });
-}
-</script>
-  // Send contact notification to Henry
   emailjs.send("service_69yj6af", "template_a6znh8p", params)
     .then(() => {
-      // Send auto-reply to the sender
       return emailjs.send("service_69yj6af", "template_voqlri3", params);
     })
     .then(() => {
@@ -489,6 +448,7 @@ function sendEmail(){
       btn.textContent = "Send Message";
     });
 }
+</script>
 </script>
 </body>
 </html>
